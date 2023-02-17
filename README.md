@@ -23,14 +23,16 @@
 
 ## About The Project
 
-Propeez is a web application that helps cities manage incidents more efficiently. Users can report incidents, which are then stored in a database and managed by the municipal government through a back office dashboard. The application also features an interactive map with geolocation, and a REST API for integration with other systems.
+Propeez is a web application that helps cities manage incidents more efficiently. Users can report incidents, which are then stored in a database and managed by the municipal government through a back office dashboard. The municpal government can also communicate about the incidents and users see it directly in the interactive map. The application also features an interactive map with geolocation, and a REST API for integration with other systems.
 
 ![image](https://user-images.githubusercontent.com/71853052/219608413-a750fe23-1fbf-4fb8-9745-62e444a7f779.png)
+
+[Test the tool](https://propeez.vercel.app/)
 
 ## 🧐 Features    
 - Interactive map with geolocalization.
 - Database: Store all the information about the incidents.
-- Back office dashboard (CRUD) to manage incidents.
+- Back office dashboard (CRUD) to manage incidents and report incidents.
 - Users can report incidents
 - Rest API
 
@@ -41,6 +43,7 @@ Propeez is a web application that helps cities manage incidents more efficiently
 - [Prisma](https://www.prisma.io/)
 - [Cloudinary](https://cloudinary.com/)
 - [Vercel](https://vercel.com/)
+- [Cloudinary](https://cloudinary.com/)
 - [Mapbox](https://www.mapbox.com/)
 - [Postgresql](https://www.postgresql.org/)
 
