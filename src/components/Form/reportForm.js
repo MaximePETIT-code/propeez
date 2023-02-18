@@ -9,6 +9,7 @@ export default function ReportForm({
 	categories,
 	api,
 	incident = null,
+	noEndDate = false,
 }) {
 	const [title, setTitle] = useState(incident ? incident?.title : '');
 	const [description, setDescription] = useState(
@@ -70,7 +71,7 @@ export default function ReportForm({
 				latitude: lat || incident?.latitude,
 				longitude: lng || incident?.longitude,
 				startDate,
-				endDate,
+				...(!noEndDate && endDate),
 				categoryId: category,
 				...(incident?.id && { id: incident.id }),
 				...(incident?.published && { published: incident.published }),
@@ -118,6 +119,7 @@ export default function ReportForm({
 					setCategory={setCategory}
 					categories={categories}
 					handleChange={handleChange}
+					noEndDate={noEndDate}
 				/>
 				<input className={styles.send_button} type="submit" value="Envoyer" />
 			</form>

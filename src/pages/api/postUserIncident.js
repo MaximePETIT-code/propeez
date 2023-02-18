@@ -25,7 +25,6 @@ export default async function handle(req, res) {
 			latitude: incident.latitude,
 			longitude: incident.longitude,
 			startDate: incident.startDate,
-			endDate: incident.endDate,
 			category: {
 				connect: {
 					id: incident.categoryId,

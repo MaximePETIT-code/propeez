@@ -16,6 +16,7 @@ export default function Report({ categories }) {
 					formTitle={'Signaler un incident que vous avez constaté'}
 					categories={categories}
 					api={'/api/postUserIncident'}
+					noEndDate={true}
 				/>
 			</Layout>
 		</>

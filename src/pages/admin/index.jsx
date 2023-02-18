@@ -17,6 +17,9 @@ import prisma from '/lib/prisma';
 
 export default function Admin({ incidents }) {
 	const router = useRouter();
+	const refreshData = () => {
+		router.replace(router.asPath);
+	};
 
 	const [filter, setFilter] = useState('all');
 	const allIncidents = incidents;
@@ -57,6 +60,7 @@ export default function Admin({ incidents }) {
 					id: selectedIncident.id,
 				}),
 			});
+			refreshData();
 		} catch (error) {
 			console.error(error);
 		}
@@ -73,6 +77,7 @@ export default function Admin({ incidents }) {
 					id: selectedIncident.id,
 				}),
 			});
+			refreshData();
 		} catch (error) {
 			console.error(error);
 		}
@@ -177,20 +182,14 @@ export default function Admin({ incidents }) {
 										{filter === 'pending' ? (
 											<div
 												className={styles.publish}
-												onClick={() => {
-													publishIncident();
-													router.push('/admin');
-												}}
+												onClick={() => publishIncident()}
 											>
 												<p>Publier</p>
 											</div>
 										) : null}
 										<div
 											className={styles.delete}
-											onClick={() => {
-												deleteIncident();
-												router.push('/admin');
-											}}
+											onClick={() => deleteIncident()}
 										>
 											<p>Supprimer</p>
 										</div>

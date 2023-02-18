@@ -18,6 +18,7 @@ export default function FormFields({
 	setCategory,
 	categories,
 	handleChange,
+	noEndDate,
 }) {
 	const formFields = [
 		{
@@ -106,7 +107,7 @@ export default function FormFields({
 				</div>
 			),
 		},
-		{
+		!noEndDate && {
 			type: 'date',
 			name: 'end_date',
 			label: 'Date de fin',
@@ -182,51 +183,55 @@ export default function FormFields({
 		},
 	];
 
-	return formFields.map((field, index) => (
-		<div className={styles.item} key={index}>
-			{field.type === 'textarea' ? (
-				<>
-					<label>{field.label}</label>
-					<textarea
-						name={field.name}
-						placeholder={field.placeholder}
-						onChange={field.onChange}
-						value={field.value}
-					/>
-				</>
-			) : field.type === 'autocomplete' || field.type === 'date' ? (
-				<>
-					<label>{field.label}</label>
-					{field.component}
-				</>
-			) : field.type === 'text' ? (
-				<>
-					<label>{field.label}</label>
-					<input
-						type={field.type}
-						name={field.name}
-						placeholder={field.placeholder}
-						onChange={field.onChange}
-						value={field.value}
-					/>
-				</>
-			) : field.type === 'file' ? (
-				<>
-					<label>{field.label}</label>
-					<input
-						onChange={handleChange}
-						accept={field.accept}
-						type={field.type}
-					></input>
-				</>
-			) : (
-				<>
-					<label>{field.label}</label>
-					<select onChange={field.onChange} value={field.value}>
-						{field.options}
-					</select>
-				</>
-			)}
-		</div>
-	));
+	return formFields.map((field, index) => {
+		if (!field) return null;
+
+		return (
+			<div className={styles.item} key={index}>
+				{field.type === 'textarea' ? (
+					<>
+						<label>{field.label}</label>
+						<textarea
+							name={field.name}
+							placeholder={field.placeholder}
+							onChange={field.onChange}
+							value={field.value}
+						/>
+					</>
+				) : field.type === 'autocomplete' || field.type === 'date' ? (
+					<>
+						<label>{field.label}</label>
+						{field.component}
+					</>
+				) : field.type === 'text' ? (
+					<>
+						<label>{field.label}</label>
+						<input
+							type={field.type}
+							name={field.name}
+							placeholder={field.placeholder}
+							onChange={field.onChange}
+							value={field.value}
+						/>
+					</>
+				) : field.type === 'file' ? (
+					<>
+						<label>{field.label}</label>
+						<input
+							onChange={handleChange}
+							accept={field.accept}
+							type={field.type}
+						></input>
+					</>
+				) : (
+					<>
+						<label>{field.label}</label>
+						<select onChange={field.onChange} value={field.value}>
+							{field.options}
+						</select>
+					</>
+				)}
+			</div>
+		);
+	});
 }
